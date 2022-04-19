@@ -22,14 +22,15 @@ public class OutputWriterTest {
         objectList.add(mountain);
 
         List<String> testLines = new ArrayList<>();
-        testLines.add("C - 2 - 4");
-        testLines.add("M - 1 - 2");
-
+        testLines.add("C - 4 - 5");
+        testLines.add("M - 0 - 0");
+        testLines.add("M - 1 - 1");
+        testLines.add("M - 2 - 4");
         OutputWriter.writeOutputToFile(objectList, "src/test/resources/outputTest.txt");
 
-        List<String> readLines = InputReader.read("src/test/resources/outputTest.txt");
+        List<String> readLines = InputReader.read();
 
-        assertEquals(2, readLines.size());
+        assertEquals(4, readLines.size());
         assertTrue(readLines.get(0).equalsIgnoreCase(testLines.get(0)));
         assertTrue(readLines.get(1).equalsIgnoreCase(testLines.get(1)));
     }

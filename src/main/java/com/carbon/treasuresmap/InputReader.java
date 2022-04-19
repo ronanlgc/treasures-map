@@ -7,17 +7,16 @@ import java.util.Scanner;
 
 public class InputReader {
 
-    public static List<String> read(String path) throws FileNotFoundException {
+    public static List<String> read() throws IOException {
 
         List<String> lines = new ArrayList<>();
+        try (InputStream is = InputReader.class.getClassLoader().getResourceAsStream("map.txt")) {
+            Scanner sc = new Scanner(is);
+            while (sc.hasNextLine())
+                lines.add(sc.nextLine());
+        }
+//        File inputFile = new File(path);
 
-//        InputStream in = InputReader.class.getResourceAsStream(path);
-//        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-        File inputFile = new File(path);
-        Scanner sc = new Scanner(inputFile);
-
-        while (sc.hasNextLine())
-            lines.add(sc.nextLine());
         return lines;
     }
 }
